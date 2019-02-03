@@ -307,12 +307,22 @@
                   <div class="panel-header">
                       <h2>Etudiants</h2>
                   </div>
-                  
-                  <div class="panel-body">   
                   <a class="btn btn-primary" href="{{ route('etudiant_create') }}">Nouveau Etudiant</a> 
 
+
+                  <p>&nbsp</p>
+             
+                 
+                  <div class="col-sm-12" style="position:right">
+                  <h6>Filtrer par niveau</h1>
+                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="rechercher par niveau..">
+                  </div>
+                  <p>&nbsp</p>
+                	
+                  <div class="panel-body">   
+                 
                       @if (count($etudiants) > 0)
-                          <table class="table table-responsive" id="example">
+                          <table class="table table-responsive" id="myTable">
                               <thead>
                                   <th with="80px">No</th>
                                   <th>Prenom</th>
@@ -370,6 +380,30 @@
     </section>
    
   </section>
+
+  <script>
+        function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[7];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+</script>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="{{URL::asset('lib/jquery/jquery.min.js')}}"></script>
 
