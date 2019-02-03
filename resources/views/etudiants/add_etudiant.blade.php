@@ -311,37 +311,37 @@
                               
                               <label>Prenom</label>
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="prenom" placeholder="prenom">
+                                  <input type="text" class="form-control" name="prenom" placeholder="prenom" required>
                               </div>
 
                               <label>Nom</label>
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="nom" placeholder="nom">
+                                  <input type="text" class="form-control" name="nom" placeholder="nom" required>
                               </div>
 
                               <label>Adresse</label>
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="adresse" placeholder="adresse">
+                                  <input type="text" class="form-control" name="adresse" placeholder="adresse" required>
                               </div>
 
                               <label>Date de Naissance</label>
                               <div class="form-group">
-                                  <input type="date" class="form-control" name="dateNaissance" >
+                                  <input type="date" class="form-control" name="dateNaissance" required>
                               </div>
 
                               <label>Email</label>
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="email" placeholder="email">
+                                  <input type="text" class="form-control" name="email" placeholder="email" required>
                               </div>
 
                               <label>Telephone</label>
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="telephone" placeholder="telephone">
+                                  <input type="text" class="form-control" name="telephone" placeholder="telephone" required>
                               </div>
 
                               <label>Niveux</label>
                               <div class="form-group">
-                                  <select name="niveau" class="form-control">
+                                  <select name="niveau" class="form-control" required>
                                       <option value="null">aucun niveau selectionné</option>
                                       @foreach ($niveaux as $niveau)
                                       <option value="{{ $niveau->id }}">{{ $niveau->libelle }}</option>
