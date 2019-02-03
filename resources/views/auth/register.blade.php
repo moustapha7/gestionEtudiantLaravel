@@ -62,7 +62,7 @@
                                          <option >selectionner un role pour cet utilisateur</option>
                                          <option value="Admin" >Admin</option>
                                          <option value="Professeur" >Professeur</option>
-                                         <option value="Etudiants" >Etudiant</option>
+                                         <option value="Assistant" >Assistant</option>
                                         
                                 </select>
                             </div>    

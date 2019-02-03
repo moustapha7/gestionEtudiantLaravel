@@ -43,15 +43,7 @@ class RegisterController extends Controller
 
 
 
-    public function listRole()
-    {
-        $roles=Role::all();
-
-        return view('/register',compact('roles'));
-
-
-    }
-
+  
 
     /**
      * Get a validator for an incoming registration request.
@@ -62,6 +54,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
     
+        if (Auth::user()->role_id=="Admin")
+        {
 
         return Validator::make($data, [
             'prenom' => ['required', 'string','max:255'],
@@ -70,6 +64,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
+        }
     }
 
     /**
@@ -80,16 +75,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (Auth::user()->role_id=="Admin")
+        {
 
        
 
-        return User::create([
-            
-            'prenom' => $data['prenom'],
-            'name' => $data['name'],
-            'role_id' => $data['role_id'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+            return User::create([
+                
+                'prenom' => $data['prenom'],
+                'name' => $data['name'],
+                'role_id' => $data['role_id'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
     }
 }

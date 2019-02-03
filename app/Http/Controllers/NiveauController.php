@@ -9,6 +9,9 @@ use App\Niveau;
 
 class NiveauController extends Controller
 {
+
+    //fontction pour afficher la page index des niveaux
+
     public function index()
     {
         if(Auth::check())
@@ -19,6 +22,7 @@ class NiveauController extends Controller
         return view('auth.login'); 
     }
 
+    //fontction pour afficher la page formulaire ajout niveau
 
     public function create()
     {
@@ -29,6 +33,10 @@ class NiveauController extends Controller
         }
         return view('auth.login');
     }
+
+
+
+    //fontction pour sauvegarger les niveaux
 
     public function store(Request $request)
     {
@@ -44,6 +52,9 @@ class NiveauController extends Controller
         return view('auth.login'); 
     }
 
+
+//fontction pour affciher la page de modification des niveaux
+
     public function edit($id)
     {
         if(Auth::check())
@@ -54,6 +65,8 @@ class NiveauController extends Controller
         }
         return view('auth.login');
     }
+
+    //fontction pour faire la modefication des niveaux
 
     public function update(Request $request, $id)
     {
@@ -70,6 +83,9 @@ class NiveauController extends Controller
         return view('auth.login'); 
 
     }
+
+
+    //fontction pour la suppression d'un niveau
 
     public function destroy($id)
     {

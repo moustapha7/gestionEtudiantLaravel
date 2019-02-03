@@ -21,15 +21,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     //fontction pour afficher la page d'accueil
     public function index()
     {
         return view('home');
     }
 
+
+    //fontction pour afficher index des niveaux
     public function indexNiveau()
     {
         return view('niveaux.index');
     }
+
+    //fontction pour afficher la page liste des etudiants
 
     public function indexEtudiant()
     {

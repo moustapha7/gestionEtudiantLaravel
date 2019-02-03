@@ -14,6 +14,8 @@ class EtudiantController extends Controller
         //  $this->middleware('auth');
     }
 
+    //fontction pour afficher  la page liste des etudiants
+
     public function index() 
     {
          if(Auth::check())
@@ -26,6 +28,9 @@ class EtudiantController extends Controller
         }
         return view('auth.login');     
     }
+
+
+    //fontction pour la page formulaire d'ajout d'un etudiant
 
     public function create()
     {
@@ -41,6 +46,8 @@ class EtudiantController extends Controller
         return view('auth.login');     
     }
 
+
+    //fontction pour la page formulaire de modification d'un etudiant 
 
     public function edit($id)
 
@@ -61,6 +68,8 @@ class EtudiantController extends Controller
         return view('auth.login');    
     }
 
+    //fontction pour stocker les infos etudiants
+
     public function store(Request $request)
     {
          if(Auth::check())
@@ -74,6 +83,8 @@ class EtudiantController extends Controller
         }
         return view('auth.login');   
     }
+
+    //fontction pour  enregistrer un etudiant
 
 
     public function add()
@@ -99,6 +110,8 @@ class EtudiantController extends Controller
         return view('auth.login');     
            
     }
+
+    //fontction pour modification d'un etudiant
 
     public function update()
      {
@@ -129,6 +142,8 @@ class EtudiantController extends Controller
     }
 
 
+    //fontction pour voir les details d'un etudiant
+
     public function show($id)
     {
         if(Auth::check())
@@ -140,6 +155,8 @@ class EtudiantController extends Controller
         return view('auth.login');     
             
     }
+
+    //fontction pour la suppression d'un etudiant
 
      public function delete($id) 
      {
