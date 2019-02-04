@@ -55,10 +55,10 @@
 
                         <div class="form-group row">
                             
-                            <label for="role_id" class="col-md-4 col-form-label text-md-right">Role</label>
+                            <label for="position" class="col-md-4 col-form-label text-md-right">Role</label>
                            
                             <div class="col-md-6">
-                                <select name="role_id" id="role_id" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}">
+                                <select name="position" id="position" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}">
                                          <option >selectionner un role pour cet utilisateur</option>
                                          <option value="Admin" >Admin</option>
                                          <option value="Professeur" >Professeur</option>

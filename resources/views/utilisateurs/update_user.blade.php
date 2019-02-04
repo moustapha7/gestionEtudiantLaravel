@@ -336,7 +336,7 @@
                                                 
                                     <label>Role</label>
                                     <div class="form-group">
-                                            <select name="role_id" id="role_id" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}"  value="{{ $user->role_idl}}"> required="required">
+                                            <select name="position" id="position" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}"  value="{{ $user->positionl}}"> required="required">
                                                         <option ></option>
                                                         <option value="Professeur" >Professeur</option>
                                                         <option value="Assistant" >Assistant</option>

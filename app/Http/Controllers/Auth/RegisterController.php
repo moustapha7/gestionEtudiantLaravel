@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /*
@@ -54,17 +54,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
     
-        if (Auth::user()->role_id=="Admin")
-        {
-
+    
         return Validator::make($data, [
             'prenom' => ['required', 'string','max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'role_id' => ['required', 'string', 'max:255'],
+            'position' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-        }
+        
     }
 
     /**
@@ -75,19 +73,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (Auth::user()->role_id=="Admin")
-        {
-
        
-
             return User::create([
                 
                 'prenom' => $data['prenom'],
                 'name' => $data['name'],
-                'role_id' => $data['role_id'],
+                'position' => $data['position'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
             ]);
-        }
+        
     }
 }

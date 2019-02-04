@@ -23,8 +23,7 @@ class CreateTableEtudiants extends Migration
             $table->string('telephone');
             $table->integer('niveau_id')->unsigned();
 
-            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('restrict')  ->onUpdate('restrict');
-
+           
 
             $table->timestamps();
         });

@@ -325,11 +325,11 @@
                             <div class="form-group">
                               <strong>Email :</strong>
                               {{$user->email}}
-                            </div>
+                            </div>  
                         
                             <div class="form-group">
                               <strong>Role:</strong>
-                              {{$user->role_id}}
+                              {{$user->position}}
                             </div>
                   
                           </div>

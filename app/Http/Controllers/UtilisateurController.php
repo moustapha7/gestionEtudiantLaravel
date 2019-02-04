@@ -71,13 +71,13 @@ class UtilisateurController extends Controller
 
     public function add()
     {
-    if (Auth::user()->role_id=="Admin")
+    if (Auth::user()->position=="Admin")
       {
               $user = new User();
 
               $user->prenom = Input::get('prenom');
               $user->name = Input::get('name');
-              $user->role_id = Input::get('role_id');
+              $user->position = Input::get('position');
               $user->email = Input::get('email');
               $user->password= Input::get('password');
              
@@ -95,13 +95,13 @@ class UtilisateurController extends Controller
 
     public function update()
      {
-        if (Auth::user()->role_id=="Admin")
+        if (Auth::user()->position=="Admin")
         {
             $user = User::where('id', Input::get('id'))->first();
 
             $user->prenom = Input::get('prenom');
             $user->name = Input::get('name');
-             $user->role_id = Input::get('role_id');
+             $user->position = Input::get('position');
             $user->email = Input::get('email');
            
             $user->save();
