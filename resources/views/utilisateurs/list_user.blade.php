@@ -247,7 +247,7 @@
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="{{URL::asset('img/ui-sam.jpg')}}" class="img-circle" width="80"></a></p>
           <h5 class="centered"><strong><h2>{{ Auth::user()->prenom }} {{ Auth::user()->name }}</h2></strong></h5>
-
+          <h5 class="centered">({{ Auth::user()->position }} )</h5>
           <li class="mt">
           <a href="/home">
               <i class="fa fa-dashboard"></i>
@@ -260,8 +260,12 @@
               <span>Utilisateurs</span>
               </a>
             <ul class="sub">
+            @if (Auth::user()->position=="Admin")
               <li><a href="{{ route('user_create') }}">Nouveau</a></li>
+              @endif
+              @if (Auth::user()->position=="Assistant" || Auth::user()->position=="Admin")
               <li><a href="/listUser" >liste des utilisateurs</a></li>
+              @endif
             </ul>
           </li>
           <li class="sub-menu">
@@ -270,7 +274,9 @@
               <span>Etudiants</span>
               </a>
             <ul class="sub">
+            @if (Auth::user()->position=="Professeur" || Auth::user()->position=="Admin")
               <li><a href="{{ route('etudiant_create') }}">Nouveau</a></li>
+              @endif
               <li><a href="/etudiant/index">liste des Etudiants</a></li>
              
             </ul>
@@ -306,9 +312,9 @@
                                 <div class="panel-header">
                                     <h2>Liste Utilisateur</h2>
                                 </div>
-                              
+                                @if (Auth::user()->position=="Admin")
                                   <a class="btn btn-primary" href="{{ route('user_create') }}">Nouveau Utilisateur</a>
-                
+                                  @endif
                                   @if (count($users) > 0)
                                       <table class="table table-responsive">
                                           <thead>
@@ -329,16 +335,20 @@
                                                   <td>{{ $user->email }}</td>
                                                   <td>{{ $user->position }}</td>
                                                   <td>
-
+                                                      
                                                       <a class="btn btn-primary" href="{{ route('user_show', ['id' => $user->id ] ) }}">
                                                       <i class="fa fa-eye"></i>
                                                       </a>
+                                                      @if (Auth::user()->position=="Assistant" || Auth::user()->position=="Admin")
                                                       <a class="btn btn-success" href="{{ route('user_edit', ['id' => $user->id ] ) }}">
                                                       <i class="fa fa-pencil"></i>
                                                       </a>
+                                                      @endif
+                                                      @if (Auth::user()->position=="Admin")
                                                       <a class="btn btn-danger" href="{{ route('deleteUser', ['id' => $user->id ] ) }}">
                                                       <i class="fa fa-trash"></i>
                                                       </a>
+                                                      @endif
                                                   </td> 
                                               </tr>
                                           @endforeach

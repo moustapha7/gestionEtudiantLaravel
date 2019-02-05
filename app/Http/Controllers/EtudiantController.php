@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Etudiant;
 use App\Niveau;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EtudiantController extends Controller
 {
@@ -34,7 +35,7 @@ class EtudiantController extends Controller
 
     public function create()
     {
-         if(Auth::check())
+         if (Auth::user()->position=="Professeur" || Auth::user()->position=="Admin")
         {
             return view('etudiants.add_etudiant',
             [
@@ -43,7 +44,9 @@ class EtudiantController extends Controller
                 'etudiants'=>Etudiant::all()
             ]);
         }
-        return view('auth.login');     
+        else {
+            return " ouff accéss non autorisé";
+        }     
     }
 
 
@@ -52,7 +55,7 @@ class EtudiantController extends Controller
     public function edit($id)
 
     {
-         if(Auth::check())
+        if (Auth::user()->position=="Professeur" || Auth::user()->position=="Admin")
         {
 
             $etudiant = Etudiant::where('id', $id)->first();
@@ -64,8 +67,9 @@ class EtudiantController extends Controller
                 ]
 
             );
-         }
-        return view('auth.login');    
+         } else {
+                return " ouff accéss non autorisé";
+            }   
     }
 
     //fontction pour stocker les infos etudiants
@@ -160,8 +164,9 @@ class EtudiantController extends Controller
 
      public function delete($id) 
      {
-         if(Auth::check())
+        if (Auth::user()->position=="Professeur" || Auth::user()->position=="Admin")
         {
+
 
         $etudiant = Etudiant::where('id', $id)->first();
         $etudiant->forceDelete();
@@ -170,7 +175,9 @@ class EtudiantController extends Controller
 
         }
 
-        return view('auth.login'); 
+        else {
+            return " ouff accéss non autorisé";
+        } 
     }
 
 

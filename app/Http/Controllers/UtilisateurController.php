@@ -41,6 +41,9 @@ class UtilisateurController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->position=="Admin")
+        {
+           
             $user = User::where('id', $id)->first();
             return view('utilisateurs.update_user',
                 [
@@ -48,6 +51,10 @@ class UtilisateurController extends Controller
                 ]
 
             );
+        }
+        else {
+            return " ouff accéss non autorisé";
+        }    
        
     }
 
@@ -109,8 +116,10 @@ class UtilisateurController extends Controller
             
              return  redirect()->route('list_user');
         }
-
-        return view('auth.login');      
+        else {
+            return " ouff accéss non autorisé";
+        }
+             
 
     }
 
@@ -118,13 +127,15 @@ class UtilisateurController extends Controller
 
     public function show($id)
     {
-        if(Auth::check())
+        if (Auth::user()->position=="Admin" || Auth::user()->position=="Assistant" )
         {
         
             $user  =User::find($id);
             return view('utilisateurs.details',compact('user'));
         }
-        return view('auth.login');     
+        else {
+            return " ouff accéss non autorisé";
+        } 
             
     }
 
@@ -132,9 +143,13 @@ class UtilisateurController extends Controller
 //fontction pour la suppression d'un user
     public function destroy($id)
     {
+        if (Auth::user()->position=="Admin" || Auth::user()->position=="Assistant" )
+        {
        
            User::find($id)->delete();
             return redirect()->route('etudiants.list_user') ;
-
+           }   else {
+                return " ouff accéss non autorisé";
+            }
     }
 }
