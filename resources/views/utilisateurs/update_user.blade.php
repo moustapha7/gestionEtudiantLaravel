@@ -247,7 +247,7 @@
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="{{URL::asset('img/ui-sam.jpg')}}" class="img-circle" width="80"></a></p>
           <h5 class="centered"><strong><h2>{{ Auth::user()->prenom }} {{ Auth::user()->name }}</h2></strong></h5>
-
+          <h5 class="centered">({{ Auth::user()->position }} )</h5>
           <li class="mt">
           <a href="/home">
               <i class="fa fa-dashboard"></i>
@@ -260,8 +260,12 @@
               <span>Utilisateurs</span>
               </a>
             <ul class="sub">
+            @if (Auth::user()->position=="Admin")
               <li><a href="{{ route('user_create') }}">Nouveau</a></li>
+              @endif
+              @if (Auth::user()->position=="Assistant" || Auth::user()->position=="Admin")
               <li><a href="/listUser" >liste des utilisateurs</a></li>
+              @endif
             </ul>
           </li>
           <li class="sub-menu">
@@ -270,7 +274,9 @@
               <span>Etudiants</span>
               </a>
             <ul class="sub">
+            @if (Auth::user()->position=="Professeur" || Auth::user()->position=="Admin")
               <li><a href="{{ route('etudiant_create') }}">Nouveau</a></li>
+              @endif
               <li><a href="/etudiant/index">liste des Etudiants</a></li>
              
             </ul>
@@ -336,7 +342,7 @@
                                                 
                                     <label>Role</label>
                                     <div class="form-group">
-                                            <select name="role_id" id="role_id" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}"  value="{{ $user->role_idl}}"> required="required">
+                                            <select name="position" id="position" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}"  value="{{ $user->positionl}}"> required="required">
                                                         <option ></option>
                                                         <option value="Professeur" >Professeur</option>
                                                         <option value="Assistant" >Assistant</option>

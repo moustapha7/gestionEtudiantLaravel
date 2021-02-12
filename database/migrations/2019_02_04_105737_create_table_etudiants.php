@@ -26,8 +26,7 @@ class CreateTableEtudiants extends Migration
             $table->string('tel');
             
 
-            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('restrict')  ->onUpdate('restrict');
-
+           
 
             $table->timestamps();
         });

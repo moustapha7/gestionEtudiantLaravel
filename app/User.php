@@ -16,7 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = ['id',
+<<<<<<< HEAD
         'firstname','name', 'email','tel', 'password','droit',
+=======
+        'prenom','name', 'email', 'password','position',
+>>>>>>> e93c705475a33ddd8b92364c51a748ae9a19ec21
     ];
 
     /**
@@ -28,6 +32,11 @@ class User extends Authenticatable
         'password', 'remember_token'
     ];
 
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> e93c705475a33ddd8b92364c51a748ae9a19ec21
 
   
 }
